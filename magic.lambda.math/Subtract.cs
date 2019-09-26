@@ -3,9 +3,7 @@
  * Licensed as Affero GPL unless an explicitly proprietary license has been obtained.
  */
 
-using System;
 using System.Linq;
-using System.Collections.Generic;
 using magic.node;
 using magic.node.extensions;
 using magic.signals.contracts;
