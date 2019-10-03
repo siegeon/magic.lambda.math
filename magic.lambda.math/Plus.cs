@@ -3,20 +3,32 @@
  * Licensed as Affero GPL unless an explicitly proprietary license has been obtained.
  */
 
-using System.Linq;
 using magic.node;
-using magic.node.extensions;
 using magic.signals.contracts;
+using magic.lambda.math.utilities;
 
-namespace magic.lambda
+namespace magic.lambda.math
 {
+    /// <summary>
+    /// [+] slot for performing additions.
+    /// </summary>
     [Slot(Name = "+")]
     public class Plus : ISlot
     {
+        /// <summary>
+        /// Slot implementation.
+        /// </summary>
+        /// <param name="signaler">Signaler that raised the signal.</param>
+        /// <param name="input">Arguments to slot.</param>
         public void Signal(ISignaler signaler, Node input)
         {
             signaler.Signal("eval", input);
-            input.Value = input.Children.Sum(x => x.GetEx<dynamic>());
+            dynamic sum = Utilities.GetBase(input);
+            foreach (var idx in Utilities.AllButBase(input))
+            {
+                sum += idx;
+            }
+            input.Value = sum;
         }
     }
 }

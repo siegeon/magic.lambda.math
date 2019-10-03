@@ -22,12 +22,34 @@ namespace magic.lambda.math.tests
         }
 
         [Fact]
+        public void AddWithBase()
+        {
+            var lambda = Common.Evaluate(@"
+
++:int:2
+   :int:5
+   :int:7");
+            Assert.Equal(14, lambda.Children.First().Value);
+        }
+
+        [Fact]
         public void AddExpression()
         {
             var lambda = Common.Evaluate(@"
 
 +
    :x:./+
+   :int:7
+.:int:5");
+            Assert.Equal(12, lambda.Children.First().Value);
+        }
+
+        [Fact]
+        public void AddExpressionWithBase()
+        {
+            var lambda = Common.Evaluate(@"
+
++:x:+
    :int:7
 .:int:5");
             Assert.Equal(12, lambda.Children.First().Value);
@@ -55,6 +77,16 @@ namespace magic.lambda.math.tests
    :int:2
    :int:3");
             Assert.Equal(12, lambda.Children.First().Value);
+        }
+
+        [Fact]
+        public void Modulo()
+        {
+            var lambda = Common.Evaluate(@"
+
+%:int:7
+   :int:5");
+            Assert.Equal(2, lambda.Children.First().Value);
         }
 
         [Fact]

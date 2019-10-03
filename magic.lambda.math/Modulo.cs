@@ -10,10 +10,10 @@ using magic.lambda.math.utilities;
 namespace magic.lambda.math
 {
     /// <summary>
-    /// [-] slot for performing subtractions.
+    /// [%] slot for performing division.
     /// </summary>
-    [Slot(Name = "-")]
-    public class Subtract : ISlot
+    [Slot(Name = "%")]
+    public class Modulo : ISlot
     {
         /// <summary>
         /// Slot implementation.
@@ -26,7 +26,7 @@ namespace magic.lambda.math
             dynamic sum = Utilities.GetBase(input);
             foreach (var idx in Utilities.AllButBase(input))
             {
-                sum -= idx;
+                sum %= idx;
             }
             input.Value = sum;
         }
