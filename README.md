@@ -13,7 +13,16 @@ slots.
 * __[%]__ - Modulo
 
 All of the above can be given any number of arguments, including as its value, and will treat the first argument as the _"base"_,
-and performing the rest of the arguments self assigning the base as it proceeds.
+and performing the rest of the arguments self assigning the base as it proceeds. For instance, the following code will first divide
+100 by 4, then divide that result by 5 again, resulting in 5.
+
+```
+/:int:100
+   :int:4
+   :int:5
+```
+
+The value of the above __[/]__ node after evaluating the above Hyperlambda will be 5.
 
 ## License
 
