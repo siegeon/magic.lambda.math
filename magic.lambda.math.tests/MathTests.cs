@@ -99,5 +99,44 @@ namespace magic.lambda.math.tests
    :int:2");
             Assert.Equal(6, lambda.Children.First().Value);
         }
+
+        [Fact]
+        public void Increment()
+        {
+            var lambda = Common.Evaluate(@"
+.foo:int:4
+increment:x:-");
+            Assert.Equal(5, lambda.Children.First().Value);
+        }
+
+        [Fact]
+        public void Decrement()
+        {
+            var lambda = Common.Evaluate(@"
+.foo:int:5
+decrement:x:-");
+            Assert.Equal(4, lambda.Children.First().Value);
+        }
+
+        [Fact]
+        public void IncrementMultipleNodes()
+        {
+            var lambda = Common.Evaluate(@"
+.foo:int:4
+.foo:int:4
+increment:x:../*/.foo");
+            Assert.Equal(5, lambda.Children.First().Value);
+            Assert.Equal(5, lambda.Children.Skip(1).First().Value);
+        }
+
+        [Fact]
+        public void IncrementWithStep()
+        {
+            var lambda = Common.Evaluate(@"
+.foo:int:4
+increment:x:-
+   :int:3");
+            Assert.Equal(7, lambda.Children.First().Value);
+        }
     }
 }

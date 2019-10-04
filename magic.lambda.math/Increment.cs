@@ -3,17 +3,18 @@
  * Licensed as Affero GPL unless an explicitly proprietary license has been obtained.
  */
 
+using System.Linq;
 using magic.node;
+using magic.node.extensions;
 using magic.signals.contracts;
-using magic.lambda.math.utilities;
 
 namespace magic.lambda.math
 {
     /// <summary>
-    /// [-] slot for performing subtractions.
+    /// [increment] slot for incrementing some value, optionally by a [step] argument.
     /// </summary>
-    [Slot(Name = "-")]
-    public class Subtract : ISlot
+    [Slot(Name = "increment")]
+    public class Increment : ISlot
     {
         /// <summary>
         /// Slot implementation.
@@ -23,12 +24,20 @@ namespace magic.lambda.math
         public void Signal(ISignaler signaler, Node input)
         {
             signaler.Signal("eval", input);
-            dynamic sum = Utilities.GetBase(input);
-            foreach (var idx in Utilities.AllButBase(input))
+            var step = GetStep(input);
+            foreach (var idx in input.Evaluate())
             {
-                sum -= idx;
+                idx.Value = idx.Get<dynamic>() + step;
             }
-            input.Value = sum;
         }
+
+        #region [ -- Private helper methods -- ]
+
+        dynamic GetStep(Node input)
+        {
+            return input.Children.FirstOrDefault()?.Value ?? 1;
+        }
+
+        #endregion
     }
 }
