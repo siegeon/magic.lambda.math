@@ -13,7 +13,7 @@ namespace magic.lambda.math
     /// <summary>
     /// [decrement] slot for decrementing some value, optionally by a [step] argument.
     /// </summary>
-    [Slot(Name = "decrement")]
+    [Slot(Name = "math.decrement")]
     public class Decrement : ISlot
     {
         /// <summary>

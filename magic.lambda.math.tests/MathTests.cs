@@ -15,7 +15,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 
-+
+math.add
    :int:5
    :int:7");
             Assert.Equal(12, lambda.Children.First().Value);
@@ -26,7 +26,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 
-+:int:2
+math.add:int:2
    :int:5
    :int:7");
             Assert.Equal(14, lambda.Children.First().Value);
@@ -37,7 +37,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 
-+
+math.add
    :x:./+
    :int:7
 .:int:5");
@@ -49,7 +49,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 
-+:x:+
+math.add:x:+
    :int:7
 .:int:5");
             Assert.Equal(12, lambda.Children.First().Value);
@@ -60,7 +60,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 
--
+math.subtract
    :int:8
    :int:5
    :int:1");
@@ -72,7 +72,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 
-*
+math.multiply
    :int:2
    :int:2
    :int:3");
@@ -84,7 +84,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 
-%:int:7
+math.modulo:int:7
    :int:5");
             Assert.Equal(2, lambda.Children.First().Value);
         }
@@ -94,7 +94,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 
-/
+math.divide
    :int:12
    :int:2");
             Assert.Equal(6, lambda.Children.First().Value);
@@ -105,7 +105,7 @@ namespace magic.lambda.math.tests
         {
             var lambda = Common.Evaluate(@"
 .foo:int:4
-increment:x:-");
+math.increment:x:-");
             Assert.Equal(5, lambda.Children.First().Value);
         }
 
@@ -114,7 +114,7 @@ increment:x:-");
         {
             var lambda = Common.Evaluate(@"
 .foo:int:5
-decrement:x:-");
+math.decrement:x:-");
             Assert.Equal(4, lambda.Children.First().Value);
         }
 
@@ -124,7 +124,7 @@ decrement:x:-");
             var lambda = Common.Evaluate(@"
 .foo:int:4
 .foo:int:4
-increment:x:../*/.foo");
+math.increment:x:../*/.foo");
             Assert.Equal(5, lambda.Children.First().Value);
             Assert.Equal(5, lambda.Children.Skip(1).First().Value);
         }
@@ -134,7 +134,7 @@ increment:x:../*/.foo");
         {
             var lambda = Common.Evaluate(@"
 .foo:int:4
-increment:x:-
+math.increment:x:-
    :int:3");
             Assert.Equal(7, lambda.Children.First().Value);
         }

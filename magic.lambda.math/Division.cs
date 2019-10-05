@@ -12,7 +12,7 @@ namespace magic.lambda.math
     /// <summary>
     /// [/] slot for performing division.
     /// </summary>
-    [Slot(Name = "/")]
+    [Slot(Name = "math.divide")]
     public class Division : ISlot
     {
         /// <summary>

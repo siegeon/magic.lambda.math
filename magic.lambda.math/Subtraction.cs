@@ -12,7 +12,7 @@ namespace magic.lambda.math
     /// <summary>
     /// [-] slot for performing subtractions.
     /// </summary>
-    [Slot(Name = "-")]
+    [Slot(Name = "math.subtract")]
     public class Subtraction : ISlot
     {
         /// <summary>

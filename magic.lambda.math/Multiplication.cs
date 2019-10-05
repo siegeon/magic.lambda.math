@@ -12,7 +12,7 @@ namespace magic.lambda.math
     /// <summary>
     /// [*] slot for performing multiplications.
     /// </summary>
-    [Slot(Name = "*")]
+    [Slot(Name = "math.multiply")]
     public class Multiplication : ISlot
     {
         /// <summary>

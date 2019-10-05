@@ -12,7 +12,7 @@ namespace magic.lambda.math
     /// <summary>
     /// [+] slot for performing additions.
     /// </summary>
-    [Slot(Name = "+")]
+    [Slot(Name = "math.add")]
     public class Addition : ISlot
     {
         /// <summary>
