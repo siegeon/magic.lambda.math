@@ -7,12 +7,12 @@
     <Authors>Thomas Hansen</Authors>
     <Company>Thomas Hansen</Company>
     <Copyright>Thomas Hansen, thomas@gaiasoul.com</Copyright>
-    <Description>Math helper slots for Magic.</Description>
+    <Description>Math helper slots for Magic, giving you some basic math functionality, such as the ability to add, subtract, multiply numbers, etc from Hyperlambda.</Description>
     <PackageProjectUrl>https://github.com/polterguy/magic.lambda.math</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/polterguy/magic.lambda.math/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://polterguy.github.io/favicon.ico</PackageIconUrl>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>1.1.8</PackageVersion>
+    <PackageVersion>2.0.0</PackageVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/polterguy/magic.lambda.math.git</RepositoryUrl>
@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
-    <PackageReference Include="magic.node.extensions" Version="1.1.3" />
-    <PackageReference Include="magic.signals.contracts" Version="1.1.9" />
+    <PackageReference Include="magic.node.extensions" Version="2.0.0" />
+    <PackageReference Include="magic.signals.contracts" Version="2.0.0" />
   </ItemGroup>
 </Project>
