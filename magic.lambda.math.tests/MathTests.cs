@@ -27,8 +27,8 @@ math.add
             var lambda = Common.Evaluate(@"
 
 math.add:int:2
-   :int:5
-   :int:7");
+   .:int:5
+   .:int:7");
             Assert.Equal(14, lambda.Children.First().Value);
         }
 
@@ -38,8 +38,8 @@ math.add:int:2
             var lambda = Common.Evaluate(@"
 
 math.add
-   :x:./+
-   :int:7
+   .:x:./+
+   .:int:7
 .:int:5");
             Assert.Equal(12, lambda.Children.First().Value);
         }
@@ -50,7 +50,7 @@ math.add
             var lambda = Common.Evaluate(@"
 
 math.add:x:+
-   :int:7
+   .:int:7
 .:int:5");
             Assert.Equal(12, lambda.Children.First().Value);
         }
@@ -61,9 +61,9 @@ math.add:x:+
             var lambda = Common.Evaluate(@"
 
 math.subtract
-   :int:8
-   :int:5
-   :int:1");
+   .:int:8
+   .:int:5
+   .:int:1");
             Assert.Equal(2, lambda.Children.First().Value);
         }
 
