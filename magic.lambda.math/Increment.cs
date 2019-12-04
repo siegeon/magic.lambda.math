@@ -27,6 +27,7 @@ namespace magic.lambda.math
             var step = GetStep(input);
             foreach (var idx in input.Evaluate())
             {
+                // TODO: Check to see if we need to use GetEx here!
                 idx.Value = idx.Get<dynamic>() + step;
             }
         }
