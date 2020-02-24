@@ -4,6 +4,7 @@
  */
 
 using System.Linq;
+using System.Threading.Tasks;
 using magic.node;
 using magic.node.extensions;
 using magic.signals.contracts;
@@ -14,7 +15,8 @@ namespace magic.lambda.math
     /// [increment] slot for incrementing some value, optionally by a [step] argument.
     /// </summary>
     [Slot(Name = "math.increment")]
-    public class Increment : ISlot
+    [Slot(Name = "wait.math.increment")]
+    public class Increment : ISlot, ISlotAsync
     {
         /// <summary>
         /// Slot implementation.
@@ -27,7 +29,22 @@ namespace magic.lambda.math
             var step = GetStep(input);
             foreach (var idx in input.Evaluate())
             {
-                // TODO: Check to see if we need to use GetEx here!
+                idx.Value = idx.Get<dynamic>() + step;
+            }
+        }
+
+        /// <summary>
+        /// Implementation of slot.
+        /// </summary>
+        /// <param name="signaler">Signaler used to raise the signal.</param>
+        /// <param name="input">Arguments to slot.</param>
+        /// <returns>An awaitable task.</returns>
+        public async Task SignalAsync(ISignaler signaler, Node input)
+        {
+            await signaler.SignalAsync("wait.eval", input);
+            var step = GetStep(input);
+            foreach (var idx in input.Evaluate())
+            {
                 idx.Value = idx.Get<dynamic>() + step;
             }
         }
