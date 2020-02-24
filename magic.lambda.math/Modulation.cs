@@ -14,6 +14,7 @@ namespace magic.lambda.math
     /// [%] slot for performing division.
     /// </summary>
     [Slot(Name = "math.modulo")]
+    [Slot(Name = "wait.math.modulo")]
     public class Modulation : ISlot, ISlotAsync
     {
         /// <summary>
