@@ -185,6 +185,16 @@ math.increment:x:-");
         }
 
         [Fact]
+        public void IncrementStep()
+        {
+            var lambda = Common.Evaluate(@"
+.foo:int:4
+math.increment:x:-
+   .:int:2");
+            Assert.Equal(6, lambda.Children.First().Value);
+        }
+
+        [Fact]
         public async Task IncrementAsync()
         {
             var lambda = await Common.EvaluateAsync(@"
@@ -200,6 +210,16 @@ wait.math.increment:x:-");
 .foo:int:5
 math.decrement:x:-");
             Assert.Equal(4, lambda.Children.First().Value);
+        }
+
+        [Fact]
+        public void DecrementStep()
+        {
+            var lambda = Common.Evaluate(@"
+.foo:int:5
+math.decrement:x:-
+   .:int:2");
+            Assert.Equal(3, lambda.Children.First().Value);
         }
 
         [Fact]
