@@ -5,13 +5,14 @@
 
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using magic.node;
+using magic.signals.services;
 using magic.signals.contracts;
 using magic.node.extensions.hyperlambda;
-using magic.signals.services;
 
 namespace magic.lambda.math.tests
 {
@@ -23,6 +24,15 @@ namespace magic.lambda.math.tests
             var lambda = new Parser(hl).Lambda();
             var signaler = services.GetService(typeof(ISignaler)) as ISignaler;
             signaler.Signal("eval", lambda);
+            return lambda;
+        }
+
+        static public async Task<Node> EvaluateAsync(string hl)
+        {
+            var services = Initialize();
+            var lambda = new Parser(hl).Lambda();
+            var signaler = services.GetService(typeof(ISignaler)) as ISignaler;
+            await signaler.SignalAsync("wait.eval", lambda);
             return lambda;
         }
 

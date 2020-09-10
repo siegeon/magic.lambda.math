@@ -16,8 +16,8 @@ namespace magic.lambda.math.utilities
         public static dynamic GetBase(Node node)
         {
             if (node.Value != null)
-                return node.GetEx<dynamic>() ?? throw new ArgumentNullException("No base number found during calculation attempt");
-            return node.Children.FirstOrDefault()?.GetEx<dynamic>() ?? throw new ArgumentNullException("No base number found during calculation attempt");
+                return node.GetEx<dynamic>() ?? throw new ArgumentException("No base number found during calculation attempt");
+            return node.Children.FirstOrDefault()?.GetEx<dynamic>() ?? throw new ArgumentException("No base number found during calculation attempt");
         }
 
         public static IEnumerable<dynamic> AllButBase(Node node)
