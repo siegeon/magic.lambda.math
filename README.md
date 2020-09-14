@@ -1,7 +1,7 @@
 
 # Magic Lambda Math for .Net
 
-[![Build status](https://travis-ci.org/polterguy/magic.lambda.math.svg?master)](https://travis-ci.org/polterguy/magic.lambda.math)
+[![Build status](https://travis-ci.com/polterguy/magic.lambda.math.svg?master)](https://travis-ci.com/polterguy/magic.lambda.math)
 
 This project provides math functions to [Magic](https://github.com/polterguy/magic). More specifically, it provides the following
 slots.
