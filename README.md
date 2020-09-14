@@ -1,5 +1,5 @@
 
-# Magic Lambda Math for .Net
+# Magic Lambda Math
 
 [![Build status](https://travis-ci.com/polterguy/magic.lambda.math.svg?master)](https://travis-ci.com/polterguy/magic.lambda.math)
 
