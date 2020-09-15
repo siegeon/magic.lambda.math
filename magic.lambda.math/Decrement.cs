@@ -25,7 +25,6 @@ namespace magic.lambda.math
         /// <param name="input">Arguments to slot.</param>
         public void Signal(ISignaler signaler, Node input)
         {
-            signaler.Signal("eval", input);
             var step = GetStep(input);
             foreach (var idx in input.Evaluate())
             {
