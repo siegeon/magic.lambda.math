@@ -14,7 +14,6 @@ namespace magic.lambda.math
     /// [-] slot for performing subtractions.
     /// </summary>
     [Slot(Name = "math.subtract")]
-    [Slot(Name = "wait.math.subtract")]
     public class Subtraction : ISlot, ISlotAsync
     {
         /// <summary>
@@ -41,7 +40,7 @@ namespace magic.lambda.math
         /// <returns>An awaitable task.</returns>
         public async Task SignalAsync(ISignaler signaler, Node input)
         {
-            await signaler.SignalAsync("wait.eval", input);
+            await signaler.SignalAsync("eval", input);
             dynamic sum = Utilities.GetBase(input);
             foreach (var idx in Utilities.AllButBase(input))
             {

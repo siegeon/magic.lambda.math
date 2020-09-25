@@ -14,7 +14,6 @@ namespace magic.lambda.math
     /// [*] slot for performing multiplications.
     /// </summary>
     [Slot(Name = "math.multiply")]
-    [Slot(Name = "wait.math.multiply")]
     public class Multiplication : ISlot, ISlotAsync
     {
         /// <summary>
@@ -41,7 +40,7 @@ namespace magic.lambda.math
         /// <returns>An awaitable task.</returns>
         public async Task SignalAsync(ISignaler signaler, Node input)
         {
-            await signaler.SignalAsync("wait.eval", input);
+            await signaler.SignalAsync("eval", input);
             dynamic sum = Utilities.GetBase(input);
             foreach (var idx in Utilities.AllButBase(input))
             {

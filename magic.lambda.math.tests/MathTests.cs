@@ -45,7 +45,7 @@ math.add
         {
             var lambda = await Common.EvaluateAsync(@"
 
-wait.math.add
+math.add
    :int:5
    :int:7");
             Assert.Equal(12, lambda.Children.First().Value);
@@ -102,7 +102,7 @@ math.subtract
         {
             var lambda = await Common.EvaluateAsync(@"
 
-wait.math.subtract
+math.subtract
    .:int:8
    .:int:5
    .:int:1");
@@ -126,7 +126,7 @@ math.multiply
         {
             var lambda = await Common.EvaluateAsync(@"
 
-wait.math.multiply
+math.multiply
    :int:2
    :int:2
    :int:3");
@@ -148,7 +148,7 @@ math.modulo:int:7
         {
             var lambda = await Common.EvaluateAsync(@"
 
-wait.math.modulo:int:7
+math.modulo:int:7
    :int:5");
             Assert.Equal(2, lambda.Children.First().Value);
         }
@@ -169,7 +169,7 @@ math.divide
         {
             var lambda = await Common.EvaluateAsync(@"
 
-wait.math.divide
+math.divide
    :int:12
    :int:2");
             Assert.Equal(6, lambda.Children.First().Value);
@@ -199,7 +199,7 @@ math.increment:x:-
         {
             var lambda = await Common.EvaluateAsync(@"
 .foo:int:4
-wait.math.increment:x:-");
+math.increment:x:-");
             Assert.Equal(5, lambda.Children.First().Value);
         }
 
@@ -227,7 +227,7 @@ math.decrement:x:-
         {
             var lambda = await Common.EvaluateAsync(@"
 .foo:int:5
-wait.math.decrement:x:-");
+math.decrement:x:-");
             Assert.Equal(4, lambda.Children.First().Value);
         }
 

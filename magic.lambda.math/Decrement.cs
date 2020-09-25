@@ -15,7 +15,6 @@ namespace magic.lambda.math
     /// [decrement] slot for decrementing some value, optionally by a [step] argument.
     /// </summary>
     [Slot(Name = "math.decrement")]
-    [Slot(Name = "wait.math.decrement")]
     public class Decrement : ISlot, ISlotAsync
     {
         /// <summary>
@@ -40,7 +39,7 @@ namespace magic.lambda.math
         /// <returns>An awaitable task.</returns>
         public async Task SignalAsync(ISignaler signaler, Node input)
         {
-            await signaler.SignalAsync("wait.eval", input);
+            await signaler.SignalAsync("eval", input);
             var step = GetStep(input);
             foreach (var idx in input.Evaluate())
             {
