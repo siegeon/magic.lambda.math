@@ -26,5 +26,10 @@ namespace magic.lambda.math.utilities
                 return node.Children.Select(x => x.GetEx<dynamic>());
             return node.Children.Skip(1).Select(x => x.GetEx<dynamic>());
         }
+
+        public static dynamic GetStep(Node input)
+        {
+            return input.Children.FirstOrDefault()?.Value ?? 1;
+        }
     }
 }

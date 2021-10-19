@@ -3,11 +3,11 @@
  * See the enclosed LICENSE file for details.
  */
 
-using System.Linq;
 using System.Threading.Tasks;
 using magic.node;
 using magic.node.extensions;
 using magic.signals.contracts;
+using magic.lambda.math.utilities;
 
 namespace magic.lambda.math
 {
@@ -24,11 +24,12 @@ namespace magic.lambda.math
         /// <param name="input">Arguments to slot.</param>
         public void Signal(ISignaler signaler, Node input)
         {
-            var step = GetStep(input);
+            var step = Utilities.GetStep(input);
             foreach (var idx in input.Evaluate())
             {
                 idx.Value = idx.Get<dynamic>() + step;
             }
+            input.Clear();
         }
 
         /// <summary>
@@ -40,20 +41,12 @@ namespace magic.lambda.math
         public async Task SignalAsync(ISignaler signaler, Node input)
         {
             await signaler.SignalAsync("eval", input);
-            var step = GetStep(input);
+            var step = Utilities.GetStep(input);
             foreach (var idx in input.Evaluate())
             {
                 idx.Value = idx.Get<dynamic>() + step;
             }
+            input.Clear();
         }
-
-        #region [ -- Private helper methods -- ]
-
-        dynamic GetStep(Node input)
-        {
-            return input.Children.FirstOrDefault()?.Value ?? 1;
-        }
-
-        #endregion
     }
 }
