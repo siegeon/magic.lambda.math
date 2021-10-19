@@ -29,6 +29,7 @@ namespace magic.lambda.math
             {
                 sum *= idx;
             }
+            input.Clear();
             input.Value = sum;
         }
 
@@ -46,6 +47,7 @@ namespace magic.lambda.math
             {
                 sum *= idx;
             }
+            input.Clear();
             input.Value = sum;
         }
     }
